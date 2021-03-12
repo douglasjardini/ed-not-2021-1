@@ -29,6 +29,7 @@ console.log(pessoa.ocupacao)
 // Quando o nome da propriedade tem espaços ou acento, não é possível
 // usar a sintaxe de ponto. É necessário usar a sintaxe de colchetes
 console.log(pessoa['cidade de origem'])
+console.log(pessoa.gostos)
 
 // A sintaxe dos colchetes SEMPRE funciona, mesmo se o nome da propriedade
 // for uma única palavra sem acento
@@ -43,9 +44,8 @@ console.log(pessoa[x])
 x = 'dataNasc'
 console.log(pessoa[x])
 
-
 // Criando uma nova propriedade para um objeto já existente
-// Basta atribuir um valor a unome de propriedade ainda nao existente
+// Basta atribuir um valor a um nome de propriedade ainda nao existente
 pessoa.email = 'orkutilson@gmail.com'
 pessoa.celular = '(16) 98765-4321'
 console.table(pessoa)

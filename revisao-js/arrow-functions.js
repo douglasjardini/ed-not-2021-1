@@ -22,14 +22,14 @@ console.log(quadrado(9))
 function potencia (b, e) {  // b = base, e = expoente
     return b ** e
 }
-console.log(potencia(s, 8))
+console.log(potencia(2, 8))
 
 // Função equivalente no formato arrow function
 
 // Quando temos mais de um parâmetro, os parenteses em volta dos
 // argumentos voltam a ser obrigatórios
 let potencia2 = (b, e) => b ** e
-console.log(potência2(2, 8))
+console.log(potencia2(2 , 8))
 
 // Função sem parâmetro
 function megasena() {
@@ -47,7 +47,7 @@ console.log(megasena(), megasena(),megasena(), megasena(),megasena(), megasena()
 const megasena2 = () => Math.floor(Math.random() * 60 + 1)
 console.log(megasena2(), megasena2(),megasena2(), megasena2(),megasena2(), megasena2())
 
-// Funcção com mais de uma linha de código no corpo
+// Função com mais de uma linha de código no corpo
 function somaVet(vet) {
     let soma = 0
     for (let n of vet) soma += n
@@ -65,5 +65,5 @@ const somaVet2 = vet => {
 console.log(somaVet2([12, 42, -11, 20, 9, 16]))
 
 // CONCLUSÃO  : arrow functions foram concebidas para facilitar a escrita de
-// funções de apenas uma linh, embora também possam ser usadas para funções
+// funções de apenas uma linha, embora também possam ser usadas para funções
 // de múltiplas linhas.
