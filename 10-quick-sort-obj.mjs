@@ -1,21 +1,12 @@
-/*
-    MERGE SORT
+let comps, divisoes, juncoes
 
-    No processo de ordenação, esse algoritmo "desmonta" o vetor orignal
-    contendo N elementos até obter N vetores de apenas um elemento cada um.
-    Em seguida, usando a técnica de mesclagem (merge), "remonta" o vetor,
-    dessa vez com os elementos já em ordem.
-
-    */
-
-    let comps, divisoes, juncoes
-
-    function mergeSort(vetor) {
+    function mergeSort(vetor, fncomp) {
 
         function mesclar(vetEsq, vetDir) {
             let pEsq = 0, pDir = 0, vetRes = []
             while(pEsq = 0 < vetEsq.length && pDir < vetDir.length) {
-                if(vetEsq[pEsq] < vetDir[vetDir]) {
+                //if(vetEsq[pEsq] < vetDir[vetDir]) {
+                if(vetDir[pDir], vetEsq[vetEsq]) {    //  Parametros invertidos
                     vetRes.push(vetEsq[pEsq])
                     pEsq++
                 }
@@ -63,20 +54,25 @@
         return vetor // Vetor de 1 elemento, não modificado, condição de saída
     }
 
-    comps = 0, divisoes = 0, juncoes = 0
-    //let nums = [ 7, 4, 9, 0, 6, 1, 8, 2, 5, 3]
-    let nums = [ 9, 8, 7, 6, 5, 4, 3, 2, 1]
-    let numsOrd = mergeSort(nums)
-    console.log({numsOrd})
-    console.log({comps, divisoes, juncoes})
+    import { candidatos } from './includes/candidatos-2018.mjs'
 
+    comps = 0, dividsoes = 0, juncoes = 0
+    // console.log('ANTES:, candidatos)
+    console.time('Ordenando candidatos...')
+    // Ordenando pelo nome de urna (NM_URNA CANDIDATO)
+    // let candidatosOrd = mergeSort(candidatos, (obj1, obj2) => obj1.NM_URNA_CANDIDATO > obj2.NM_URNA_CANDIDATO)
 
-    import { nomes } from './includes/100-mil-nomes.mjs'
+    // Ordenação por dois níveis: primeiro por UE (SG_UF) e, dentro da UF, pelo nº do candidato (NR_CANDIDATO)
+    let candidatosOrd = mergeSort(candidatos, (obj1, obj2) => {
+        if(obj1.SG_UE === obj2.SG_UE) {  // Empate de UE
+        // Desempate pelo NR_CANDIDATO
+        return obj1.NR_CANDIDATO > obj2.NR_CANDIDATO
+        }
+        else return obj1.SG_UE > obj2.SG_UE   // A diferenciação se dá por UF
+    })
 
-    comps = 0, divisoes = 0, juncoes = 0
-    console.time('Ordenado nomes...')
-    const nomesOrd = mergeSort(nomes)
-    console.timeEnd('Ordenando nomes...')
     let memoria = process.memoryUsage().heapUsed / 1024 / 1024
-    console.log('Depois:', nomesOrd)
-    console.log({comps, divisoes, juncoes})
+    console.timeEnd('Ordenando candidatos...')
+    // console.log('DEPOIS:', candidatosOrd)
+    candidatosOrd.map(obj => console.log(obj))
+    console.log({comps, divisoes, juncoes, memoria})
